@@ -1,0 +1,17 @@
+Source: template
+Section: web
+Priority: optional
+Maintainer: Intel Corporation.
+Standards-Version: 3.9.6
+Homepage: https://crosswalk-project.org/
+Build-Depends:
+    debhelper (>= 9)
+
+Package: template
+Architecture: any
+Pre-Depends: dpkg (>= 1.15.6)
+Depends: ${misc:Depends}, crosswalk
+Description: HTML5 web application
+ Crosswalk is a web runtime for ambitious HTML5 applications. It provides all the
+ features of a modern browser, combined with deep device integration and an API
+ for adding native extensions.

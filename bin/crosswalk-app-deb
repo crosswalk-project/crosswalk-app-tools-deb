@@ -8,13 +8,26 @@ var Shell = require ("shelljs");
 var Fs = require ('fs');
 var Path = require ('path');
 var DebProject = require('../lib/DebProject');
+var PlatformBase = require('../lib/PlatformBase');
 
 function log(msg) {
     if (typeof(msg) != 'undefined' && msg != null)
         console.log(msg);
 }
 
-var Project = new DebProject();
+function PlatformData(root_dir, packageId) {
+    var application = {
+        'packageId': packageId,
+        'output': console,
+        'pkgPath': Path.join(root_dir, 'pkg'),
+        'prjPath': Path.join(root_dir, 'prj'),
+        'appPath': Path.join(root_dir, 'app')
+    };
+    return {
+        'platformId': 'deb',
+        'application': application
+    };
+}
 
 if (process.argv.length < 3) {
     console.log("crosswalk-app-deb [create|build] [projectId]");
@@ -30,9 +43,12 @@ if (cmd) {
             break;
         }
         var packageId = process.argv[3]
-        Project.generate(packageId, log);
+        var Project = DebProject(PlatformBase, PlatformData(Path.join(Shell.pwd(), packageId), packageId));
+        Project.generate(null, log);
         break;
     case 'build':
+        var packageId = Path.basename(Shell.pwd());
+        var Project = DebProject(PlatformBase, PlatformData(Shell.pwd(), packageId));
         Project.build(null, null, log);
         break;
     default:

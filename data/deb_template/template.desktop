@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=NAME
+Comment=Web application template
+Exec=template
+Terminal=false
+Type=Application
+StartupNotify=true
+Icon=xwalk_template
+Categories=Network;Crosswalk;

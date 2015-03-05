@@ -1,5 +1,13 @@
 {
-  "name": "simple",
-  "xwalk_version": "0.0.1",
-  "start_url": "./index.html"
+    "name": "Crosswalk sample",
+    "xwalk_version": "0.0.1",
+    "icons": [
+        {
+            "src": "icon.png",
+            "sizes": "144x144",
+            "type": "image/png",
+            "density": "1.0"
+        }
+    ],  
+    "start_url": "./index.html"
 }

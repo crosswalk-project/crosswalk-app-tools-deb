@@ -1,2 +1,3 @@
 www/* usr/share/xwalk/template/www
 template usr/share/xwalk/template
+template.desktop usr/share/xwalk/template/template.desktop

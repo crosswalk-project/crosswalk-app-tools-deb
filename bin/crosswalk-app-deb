@@ -43,12 +43,12 @@ if (cmd) {
             break;
         }
         var packageId = process.argv[3]
-        var Project = DebProject(PlatformBase, PlatformData(Path.join(Shell.pwd(), packageId), packageId));
+        var Project = DebProject(PlatformBase, PlatformData(Path.join(Shell.pwd(), packageId), packageId), DebProject.getArgs);
         Project.generate(null, log);
         break;
     case 'build':
         var packageId = Path.basename(Shell.pwd());
-        var Project = DebProject(PlatformBase, PlatformData(Shell.pwd(), packageId));
+        var Project = DebProject(PlatformBase, PlatformData(Shell.pwd(), packageId), DebProject.getArgs);
         Project.build(null, null, log);
         break;
     default:

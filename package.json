@@ -5,9 +5,6 @@
   "author": "Xinchao He <xinchao.he@intel.com>",
   "license": "APACHE-V2",
   "main": "index.js",
-  "bin": {
-    "crosswalk-app-ios": "./bin/crosswalk-app-deb"
-  },
   "dependencies": {
     "shelljs": "~0.3.0"
   },

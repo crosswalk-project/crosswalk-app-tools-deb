@@ -1,12 +1,23 @@
-#!/bin/bash
+#!/bin/sh
 
-# Copyright © 2014 Intel Corporation. All rights reserved.
-# Use  of this  source  code is  governed by  an Apache v2
-# license that can be found in the LICENSE-APACHE-V2 file.
+# This file has been generated automatically. It is a generic wrapper
+# responsible for launching a Crosswalk-based application.
 
-CMD_PATH=$( realpath "$0" )
-DIR=$( cd "$( dirname "$CMD_PATH" )" && pwd )
-XWALK=$( which xwalk )
+which xwalk 2>&1 > /dev/null
 
-$XWALK ${DIR}/www/manifest.json
+if [ $? -ne 0 ]; then
+    echo "Error: cannot find the 'xwalk' executable."
+    echo "Please make sure Crosswalk is installed."
+    exit 1
+fi
 
+BASEDIR=$(dirname `readlink -f "$0"`)
+MANIFEST="${BASEDIR}/www/manifest.json"
+
+if [ ! -f "${MANIFEST}" ]; then
+    echo "Error: Cannot find ${MANIFEST}."
+    echo "Plase make sure the application has been installed correctly."
+    exit 1
+fi
+
+exec xwalk "${BASEDIR}/www/manifest.json"
